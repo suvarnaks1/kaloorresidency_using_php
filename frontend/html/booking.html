@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book Your Stay | Kaloor Garden Residency</title>
+<meta name="description" content="Book a room at Kaloor Garden Residency, Kaloor, Kochi. Nightly rates from ₹1,000 with premium amenities." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="booking.css" />
+<link rel="stylesheet" href="navbar.css" />
+<link rel="stylesheet" href="common.css" />
+<script src="common.js"></script>
+</head>
+
+<body>
+<script src="navbar.js"></script>
+
+<div class="bk-page">
+<main>
+
+<!-- HERO -->
+<section class="bk-hero">
+  <div class="bk-hero-bg"></div>
+  <div class="bk-hero-overlay"></div>
+  <div class="bk-hero-inner">
+    <h1>Reserve Your Ideal Stay</h1>
+    <p>Comfortable rooms in Kaloor, booked by the night from ₹1,000.</p>
+    <a href="#booking" class="bk-hero-btn">Book Now</a>
+  </div>
+  <ul class="bk-perks">
+    <li><strong>24/7 Support</strong><span>Always available.</span></li>
+    <li><strong>High Speed WiFi</strong><span>Work and study without limits.</span></li>
+    <li><strong>Secure Living</strong><span>Safe environment.</span></li>
+  </ul>
+</section>
+
+<!-- BOOKING DESK -->
+<section class="bk-desk" id="booking">
+  <div class="bk-desk-inner">
+
+    <div class="bk-main">
+      <header class="bk-main-head">
+        <h2>Choose Your Room</h2>
+        <p>Pick a room and your dates. The total updates as you go.</p>
+      </header>
+
+      <form id="booking-form" class="bk-form" novalidate>
+        <div class="bk-error" id="form-error" role="alert" hidden></div>
+
+        <fieldset class="bk-group">
+          <legend>Guest details</legend>
+          <label class="bk-field bk-wide"><span>Full Name</span>
+            <input type="text" name="fullName" placeholder="Full Name" autocomplete="name" /></label>
+          <label class="bk-field"><span>Email</span>
+            <input type="email" name="email" placeholder="Email" autocomplete="email" /></label>
+          <label class="bk-field"><span>Phone Number</span>
+            <input type="tel" name="phone" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="Phone Number" /></label>
+        </fieldset>
+
+        <fieldset class="bk-group">
+          <legend>Room</legend>
+          <!-- data-rate = rate per night in rupees (same as services.html) -->
+          <label class="bk-field bk-wide"><span>Room type</span>
+            <select name="roomType">
+              <option value="non-ac" data-name="Non AC Room" data-rate="1000">Non AC Room · ₹1,000</option>
+              <option value="ac" data-name="AC Room" data-rate="2000">AC Room · ₹2,000</option>
+              <option value="deluxe" data-name="Deluxe Room" data-rate="2500">Deluxe Room · ₹2,500</option>
+              <option value="double-deluxe" data-name="Double Deluxe Room" data-rate="2800">Double Deluxe · ₹2,800</option>
+              <option value="king" data-name="King Size Room" data-rate="3000">King Size Room · ₹3,000</option>
+            </select>
+          </label>
+          <label class="bk-field"><span>Number of rooms</span>
+            <select name="rooms">
+              <option value="1">1 Room</option>
+              <option value="2">2 Rooms</option>
+              <option value="3">3 Rooms</option>
+              <option value="4">4 Rooms</option>
+              <option value="5">5 Rooms</option>
+            </select></label>
+        </fieldset>
+
+        <fieldset class="bk-group">
+          <legend>Stay</legend>
+          <label class="bk-field"><span>Check-in</span>
+            <input type="date" name="checkin" /></label>
+          <label class="bk-field"><span>Check-out</span>
+            <input type="date" name="checkout" /></label>
+          <label class="bk-field bk-wide"><span>Additional requests</span>
+            <textarea name="message" rows="3" placeholder="Additional requests"></textarea></label>
+        </fieldset>
+      </form>
+
+      <button type="submit" form="booking-form" class="bk-submit bk-confirm" id="confirm-details">Confirm Details</button>
+    </div>
+
+    <aside class="bk-summary">
+      <h3 id="s-title">Booking Summary</h3>
+      <p class="bk-summary-note" id="s-note"></p>
+      <dl class="bk-rows">
+        <div id="s-id-row" hidden><dt>Booking ID</dt><dd id="s-id"></dd></div>
+        <div><dt>Guest</dt><dd id="s-guest">—</dd></div>
+        <div><dt>Email</dt><dd id="s-email">—</dd></div>
+        <div><dt>Phone</dt><dd id="s-phone">—</dd></div>
+        <div><dt>Room type</dt><dd id="s-type">—</dd></div>
+        <div><dt>Rate</dt><dd id="s-rate">—</dd></div>
+        <div><dt>Rooms</dt><dd id="s-rooms">—</dd></div>
+        <div><dt>Check-in</dt><dd id="s-checkin">—</dd></div>
+        <div><dt>Check-out</dt><dd id="s-checkout">—</dd></div>
+        <div><dt>Nights</dt><dd id="s-nights">—</dd></div>
+      </dl>
+      <div class="bk-total"><span>Total</span><strong id="s-total">—</strong><span id="s-calc"></span></div>
+      <button type="button" class="bk-submit" id="s-submit" disabled>Continue</button>
+    </aside>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bk-cta">
+  <div class="bk-cta-inner">
+    <h2>Need More Details?</h2>
+    <p>Explore our amenities, pricing and room options.</p>
+    <a href="services.html" class="bk-cta-btn">View Services</a>
+  </div>
+</section>
+
+</main>
+
+<!-- VERIFY MODAL -->
+<div class="bk-overlay" id="verify-modal" hidden>
+  <div class="bk-modal" role="dialog" aria-modal="true" aria-labelledby="verify-title">
+    <h2 id="verify-title">Verify Booking</h2>
+    <dl class="bk-rows bk-rows-light">
+      <div><dt>Name</dt><dd id="v-name"></dd></div>
+      <div><dt>Room type</dt><dd id="v-type"></dd></div>
+      <div><dt>Rate</dt><dd id="v-rate"></dd></div>
+      <div><dt>Rooms</dt><dd id="v-rooms"></dd></div>
+      <div><dt>Check-in</dt><dd id="v-checkin"></dd></div>
+      <div><dt>Check-out</dt><dd id="v-checkout"></dd></div>
+      <div><dt>Nights</dt><dd id="v-nights"></dd></div>
+      <div><dt>Total</dt><dd id="v-total"></dd></div>
+    </dl>
+    <div class="bk-modal-actions">
+      <button type="button" id="verify-edit">Edit</button>
+      <button type="button" id="verify-confirm">Confirm Booking</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="bk-overlay" id="success-modal" hidden>
+  <div class="bk-modal bk-modal-success" role="dialog" aria-modal="true" aria-labelledby="done-title">
+    <h2 id="done-title">Booking Confirmed</h2>
+    <p>Thank you for booking with Kaloor Garden Residency.</p>
+    <p>Booking ID:</p>
+    <h3 id="booking-id"></h3>
+    <button type="button" id="success-close">Close</button>
+  </div>
+</div>
+
+</div>
+
+<script src="booking.js"></script>
+</body>
+</html>

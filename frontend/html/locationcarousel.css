@@ -1,0 +1,576 @@
+/* ==========================================================================
+   LOCATION CAROUSEL
+   Converted from React LocationCarousel.css
+   Works with the original Kaloor Garden Residency home.css
+   ========================================================================== */
+
+.location-carousel-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  align-self: stretch;
+  min-width: 0;
+}
+
+.loc-carousel {
+  align-self: stretch;
+  min-width: 0;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.loc-carousel *,
+.loc-carousel *::before,
+.loc-carousel *::after {
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================================
+   CATEGORY TABS
+   ========================================================================== */
+
+.loc-carousel .loc-tabs {
+  position: relative;
+
+  display: flex;
+
+  gap: 10px;
+
+  overflow-x: auto;
+
+  padding: 4px 4px 18px;
+
+  scrollbar-width: none;
+}
+
+.loc-carousel .loc-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+
+.loc-carousel .loc-tab {
+  flex: none;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  background: transparent;
+
+  color: rgba(250, 247, 242, 0.8);
+
+  border: 1px solid rgba(201, 169, 97, 0.35);
+
+  border-radius: 0;
+
+  font-family: var(--font-body, sans-serif);
+
+  font-size: 0.7rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.loc-carousel .loc-tab:hover {
+  border-color: var(--gold, #c9a961);
+
+  color: var(--cream, #faf7f2);
+}
+
+
+.loc-carousel .loc-tab.active {
+  background: var(--gold, #c9a961);
+
+  border-color: var(--gold, #c9a961);
+
+  color: var(--ink, #0a0e1a);
+
+  font-weight: 600;
+}
+
+
+.loc-carousel .loc-tab:focus-visible,
+.loc-carousel .loc-arrow:focus-visible,
+.loc-carousel .loc-viewport:focus-visible {
+  outline: 2px solid var(--gold-light, #e5c88a);
+
+  outline-offset: 3px;
+}
+
+
+.loc-carousel .loc-tab i {
+  font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   VIEWPORT
+   ========================================================================== */
+
+.loc-carousel .loc-viewport {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 16px 0 28px;
+
+  cursor: grab;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  touch-action: pan-y;
+}
+
+
+.loc-carousel .loc-viewport.dragging {
+  cursor: grabbing;
+}
+
+
+/* ==========================================================================
+   TRACK
+   ========================================================================== */
+
+.loc-carousel .loc-track {
+  display: flex;
+
+  align-items: stretch;
+
+  width: max-content;
+
+  will-change: transform;
+}
+
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.loc-carousel .loc-card {
+  position: relative;
+
+  flex: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  height: 470px;
+
+  margin: 0;
+
+  background: var(--cream, #faf7f2);
+
+  color: var(--text, #2a2520);
+
+  border: 1px solid rgba(201, 169, 97, 0.45);
+
+  border-top: 3px solid var(--accent, #c9a961);
+
+  border-radius: 0;
+
+  overflow: hidden;
+
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+
+  will-change: transform, opacity;
+}
+
+
+.loc-carousel .loc-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  height: 36px;
+
+  background:
+    linear-gradient(
+      to top,
+      var(--cream, #faf7f2),
+      rgba(250, 247, 242, 0)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ==========================================================================
+   CARD HEADER
+   ========================================================================== */
+
+.loc-carousel .loc-card-head {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 20px 24px;
+
+  background: var(--ink-soft, #111827);
+
+  border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+}
+
+
+.loc-carousel .loc-card-icon {
+  display: grid;
+
+  place-items: center;
+
+  flex: none;
+
+  width: 46px;
+
+  height: 46px;
+
+  border: 1px solid rgba(201, 169, 97, 0.4);
+
+  font-size: 1.15rem;
+
+  color: var(--gold-light, #e5c88a);
+}
+
+
+.loc-carousel .loc-card-title {
+  margin: 0;
+
+  font-family: var(--font-display, Georgia, serif);
+
+  font-size: 1.4rem;
+
+  font-weight: 500;
+
+  font-style: italic;
+
+  line-height: 1.15;
+
+  color: var(--gold-light, #e5c88a);
+
+  text-align: left;
+}
+
+
+.loc-carousel .loc-card-count {
+  display: block;
+
+  margin-top: 4px;
+
+  font-family: var(--font-body, sans-serif);
+
+  font-size: 0.66rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color: rgba(250, 247, 242, 0.55);
+}
+
+
+/* ==========================================================================
+   LOCATION LIST
+   ========================================================================== */
+
+.loc-carousel .loc-list {
+  flex: 1;
+
+  margin: 0;
+
+  padding: 6px 24px 40px;
+
+  list-style: none;
+
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    var(--gold, #c9a961)
+    transparent;
+
+  text-align: left;
+}
+
+
+.loc-carousel .loc-list li {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin: 0;
+
+  padding: 12px 0;
+
+  border: 0;
+
+  border-bottom:
+    1px solid rgba(201, 169, 97, 0.2);
+
+  font-family: var(--font-body, sans-serif);
+
+  font-size: 0.86rem;
+
+  line-height: 1.45;
+
+  color: var(--text, #2a2520);
+}
+
+
+.loc-carousel .loc-list li:last-child {
+  border-bottom: 0;
+}
+
+
+.loc-carousel .loc-name {
+  font-weight: 500;
+}
+
+
+.loc-carousel .loc-dist {
+  flex: none;
+
+  padding: 3px 10px;
+
+  border:
+    1px solid rgba(156, 127, 63, 0.5);
+
+  font-size: 0.68rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  white-space: nowrap;
+
+  color: var(--gold-deep, #9c7f3f);
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================================
+   CONTROLS
+   ========================================================================== */
+
+.loc-carousel .loc-controls {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  color: var(--cream, #faf7f2);
+}
+
+
+.loc-carousel .loc-arrow {
+  width: 44px;
+
+  height: 44px;
+
+  padding: 0;
+
+  border:
+    1px solid rgba(201, 169, 97, 0.5);
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: var(--gold, #c9a961);
+
+  font-size: 1.5rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+.loc-carousel .loc-arrow:hover:not(:disabled) {
+  background: var(--gold, #c9a961);
+
+  color: var(--ink, #0a0e1a);
+}
+
+
+.loc-carousel .loc-arrow:disabled {
+  opacity: 0.3;
+
+  cursor: default;
+}
+
+
+.loc-carousel .loc-counter {
+  min-width: 4rem;
+
+  text-align: center;
+
+  font-family:
+    var(--font-display, Georgia, serif);
+
+  font-size: 1.15rem;
+
+  font-style: italic;
+
+  color: var(--gold-light, #e5c88a);
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+  .loc-carousel .loc-card {
+    height: 450px;
+  }
+
+  .loc-carousel .loc-card-head {
+    padding: 16px 18px;
+  }
+
+  .loc-carousel .loc-list {
+    padding: 4px 18px 40px;
+  }
+
+}
+/* ==========================================================================
+   LOCATION CAROUSEL: responsive fixes
+   ========================================================================== */
+
+/* keep the track from forcing the page wider than the screen */
+.loc-carousel,
+.loc-carousel .loc-viewport {
+  max-width: 100%;
+}
+
+/* card contents must be allowed to shrink and wrap */
+.loc-carousel .loc-card-head > div:not(.loc-card-icon) {
+  min-width: 0;
+}
+
+.loc-carousel .loc-card-title {
+  overflow-wrap: anywhere;
+}
+
+.loc-carousel .loc-list li {
+  align-items: flex-start;
+}
+
+.loc-carousel .loc-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* card height scales with the screen instead of a fixed 470px */
+.loc-carousel .loc-card {
+  height: clamp(380px, 62vh, 470px);
+}
+
+/* tablets */
+@media (max-width: 960px) {
+  .loc-carousel .loc-card-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* phones */
+@media (max-width: 640px) {
+  .ho-location {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .loc-carousel .loc-tabs {
+    gap: 8px;
+    padding-bottom: 14px;
+  }
+
+  .loc-carousel .loc-tab {
+    padding: 9px 14px;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+  }
+
+  .loc-carousel .loc-viewport {
+    padding: 8px 0 20px;
+  }
+
+  .loc-carousel .loc-card {
+    height: clamp(360px, 68vh, 450px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+  }
+
+  .loc-carousel .loc-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .loc-carousel .loc-card-title {
+    font-size: 1.15rem;
+  }
+
+  .loc-carousel .loc-list li {
+    font-size: 0.82rem;
+    padding: 10px 0;
+  }
+
+  .loc-carousel .loc-controls {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .loc-carousel .loc-tab i {
+    display: none;
+  }
+}

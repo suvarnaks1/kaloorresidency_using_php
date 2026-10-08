@@ -1,0 +1,640 @@
+/* ==========================================================================
+   Kaloor Garden Residency — Services
+   Palette: Midnight Ink · Champagne Gold · Ivory Cream
+   Type: Cormorant Garamond (display) + Inter (body)
+   ========================================================================== */
+:root {
+  --ink: #0a0e1a;
+  --ink-soft: #111827;
+  --gold: #c9a961;
+  --gold-light: #e5c88a;
+  --gold-deep: #9c7f3f;
+  --cream: #faf7f2;
+  --cream-dark: #f2ece1;
+  --text: #2a2520;
+  --text-muted: #6b6259;
+  --line: rgba(201, 169, 97, 0.28);
+  --white: #ffffff;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --space-section: clamp(64px, 8vw, 112px);
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.sv-page {
+  width: 100%;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip;
+}
+
+/* ==========================================================================
+   NAV
+   ========================================================================== */
+.sv-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px var(--gutter);
+  color: var(--cream);
+}
+
+.sv-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.sv-nav nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 36px);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.sv-nav nav a {
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.sv-nav nav a:hover,
+.sv-nav nav a[aria-current="page"] {
+  border-bottom-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.sv-nav nav .sv-nav-book {
+  padding: 10px 20px;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.sv-nav nav .sv-nav-book:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.sv-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* fallback */
+  min-height: 100svh;
+  color: var(--cream);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.sv-hero-bg {
+  position: absolute;
+  inset: -10%;
+  z-index: -2;
+  background: url("../assets/roomservices.jpg") center / cover no-repeat;
+  filter: saturate(0.85) contrast(1.05);
+  will-change: transform;
+}
+@media (max-width: 700px) {
+  .ct-hero-bg {
+    background-image: url("../assets/services2.jpg");
+  }
+}
+
+.sv-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 26, 0.7) 0%,
+    rgba(10, 14, 26, 0.45) 45%,
+    rgba(10, 14, 26, 0.92) 100%
+  );
+}
+
+.sv-hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 160px var(--gutter) clamp(36px, 6vh, 64px);
+  will-change: transform, opacity;
+}
+
+.sv-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 11vw, 9rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+.sv-title-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em; /* keeps descenders from being clipped */
+}
+
+.sv-title-line {
+  display: block;
+}
+
+.sv-title-alt {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.sv-hero-lede {
+  max-width: 480px;
+  margin-top: clamp(20px, 3vh, 32px);
+  padding-top: 24px;
+  border-top: 1px solid var(--gold);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  color: rgba(250, 247, 242, 0.85);
+}
+
+/* Facts strip */
+.sv-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(201, 169, 97, 0.35);
+  background: rgba(10, 14, 26, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.sv-fact {
+  padding: 22px clamp(16px, 4vw, 64px);
+  border-left: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+.sv-fact:first-child {
+  border-left: 0;
+}
+
+.sv-fact strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--gold-light);
+}
+
+.sv-fact span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.65);
+}
+
+/* ==========================================================================
+   SERVICES
+   ========================================================================== */
+.sv-services {
+  padding: var(--space-section) var(--gutter);
+  background: var(--cream);
+}
+
+.sv-services-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 7vw, 112px);
+  align-items: start;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.sv-services-head {
+  position: sticky;
+  top: 110px;
+}
+
+.sv-services-head h2,
+.sv-rates-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.sv-services-head h2::after,
+.sv-rates-head h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin-top: 22px;
+  background: var(--gold);
+}
+
+.sv-services-head p,
+.sv-rates-head p {
+  margin-top: 18px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sv-services-list {
+  border-top: 1px solid var(--line);
+}
+
+.sv-service {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sv-service-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: var(--gold-deep);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+
+.sv-service:hover .sv-service-icon {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--gold-light);
+}
+
+.sv-service h3 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.sv-service p {
+  margin-top: 4px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   ROOMS & RATES
+   ========================================================================== */
+.sv-rates {
+  position: relative;
+  padding: var(--space-section) var(--gutter);
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+}
+
+.sv-rates::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 15% 10%, rgba(201, 169, 97, 0.1), transparent 55%),
+    radial-gradient(circle at 90% 95%, rgba(201, 169, 97, 0.07), transparent 55%);
+  pointer-events: none;
+}
+
+.sv-rates-inner {
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.sv-rates-head {
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.sv-rates-head h2 {
+  color: var(--cream);
+}
+
+.sv-rates-head p {
+  color: rgba(250, 247, 242, 0.6);
+}
+
+.sv-board {
+  border-top: 1px solid rgba(201, 169, 97, 0.28);
+}
+
+.sv-rate {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto auto;
+  gap: clamp(16px, 3vw, 32px);
+  align-items: center;
+  padding: 30px 8px 32px;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+  transition: background-color 0.4s var(--ease);
+}
+
+.sv-rate:hover {
+  background: rgba(250, 247, 242, 0.035);
+}
+
+.sv-rate-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(201, 169, 97, 0.5);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.sv-rate:hover .sv-rate-icon {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+.sv-rate-main h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--cream);
+}
+
+.sv-rate-main p {
+  margin-top: 4px;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: rgba(250, 247, 242, 0.62);
+}
+
+.sv-rate-price {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.sv-rate-price strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--gold-light);
+}
+
+.sv-rate-price small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.55);
+}
+
+.sv-rate-book {
+  display: inline-block;
+  padding: 12px 26px;
+  border: 1px solid var(--gold);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.sv-rate-book:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* price bar: width is proportional to the rate (set inline via --w) */
+.sv-rate-bar {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: var(--w, 100%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-light));
+  transform-origin: left center;
+}
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.sv-cta {
+  position: relative;
+  padding: clamp(72px, 9vw, 120px) var(--gutter);
+  text-align: center;
+  background: var(--cream-dark);
+}
+
+.sv-cta::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  transform: translateX(-50%);
+}
+
+.sv-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.sv-cta p {
+  max-width: 520px;
+  margin: 16px auto 36px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+.sv-cta-btn {
+  display: inline-block;
+  padding: 16px 46px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--cream);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.sv-cta-btn:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .sv-services-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sv-services-head {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .sv-nav nav a:not(.sv-nav-book) {
+    display: none;
+  }
+
+  .sv-rate {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    row-gap: 18px;
+    padding: 24px 4px 26px;
+  }
+  .sv-rate-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+  }
+  .sv-rate-main {
+    grid-column: 2;
+  }
+  .sv-rate-price {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .sv-rate-book {
+    grid-column: 2 / -1;
+    justify-self: start;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sv-hero-inner {
+    padding-top: 120px;
+  }
+  .sv-fact {
+    padding: 16px 12px;
+  }
+  .sv-fact span {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .sv-service {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 16px;
+  }
+  .sv-service-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+  .sv-cta-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 24px;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .sv-hero {
+    min-height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

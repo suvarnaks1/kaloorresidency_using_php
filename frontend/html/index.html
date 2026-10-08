@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kaloor Garden Residency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="home.css" />
+<link rel="stylesheet" href="LocationCarousel.css" />
+<link rel="stylesheet" href="navbar.css" />
+<link rel="stylesheet" href="common.css" />
+<script src="common.js"></script>
+</head>
+<body style="margin:0">
+<script src="navbar.js"></script>
+
+<div class="ho-page" id="top">
+
+<!-- HERO -->
+<section class="ho-hero">
+  <picture>
+  <source media="(max-width: 768px)" srcset="../assets/metro2.jpg" />
+  <img src="../assets/metro.jpg" alt="" class="ho-hero-img" />
+</picture>
+  <div class="ho-hero-overlay"></div>
+  <div class="ho-hero-inner">
+    <h1 class="ho-hero-title">
+      <span class="ho-hero-mask"><span class="ho-hero-line ho-hero-line-alt">Welcome to</span></span>
+      <span class="ho-hero-mask"><span class="ho-hero-line">Kaloor Garden Residency</span></span>
+    </h1>
+    <p class="ho-hero-lede"><b>Modern living spaces designed for comfort, privacy, and lifestyle.</b></p>
+    <div class="ho-hero-actions">
+      <a href="booking.html" class="ho-btn ho-btn-primary">Book Now</a>
+      <a href="services.html" class="ho-btn ho-btn-secondary">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="ho-about" id="about">
+  <div class="ho-about-inner">
+    <h2>About Us</h2>
+    <p>Kaloor Garden Residency offers premium hotel living with comfort, safety, and community. Fully furnished rooms and peaceful surroundings ensure a hassle-free stay for students and professionals.</p>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="ho-why" id="why">
+  <div class="ho-inner">
+    <header class="ho-head">
+      <h2>Why Choose Kaloor Garden Residency, Kaloor?</h2>
+      <p>Located in one of Kochi's most sought-after residential neighborhoods</p>
+    </header>
+    <div class="ho-why-layout">
+      <div class="ho-radar-wrap">
+        <div class="ho-radar" id="radar">
+          <svg class="ho-rings" id="rings" viewBox="0 0 400 400" aria-hidden="true"></svg>
+          <span class="ho-center" role="img" aria-label="Kaloor Garden Residency"><i class="fa-solid fa-building"></i></span>
+        </div>
+        <p class="ho-radar-caption">Each ring marks the distance from Kaloor Garden Residency.</p>
+      </div>
+      <ul class="ho-why-list" id="why-list"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="ho-rooms" id="rooms">
+  <div class="ho-inner">
+    <header class="ho-head">
+      <h2>Our Rooms</h2>
+      <p>Choose a space that fits your lifestyle.</p>
+    </header>
+    <div class="ho-rooms-grid">
+      <figure class="ho-room"><img src="assets/room1.jpg" alt="Single Room" loading="lazy" /><figcaption><h3>Single Room</h3><p>Private, calm, and focused living space.</p></figcaption></figure>
+      <figure class="ho-room"><img src="assets/room2.jpg" alt="Shared Room" loading="lazy" /><figcaption><h3>Shared Room</h3><p>Comfortable shared living with modern facilities.</p></figcaption></figure>
+      <figure class="ho-room"><img src="assets/room3.jpg" alt="Premium Room" loading="lazy" /><figcaption><h3>Premium Room</h3><p>Spacious and stylish interiors with extra comfort.</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION ADVANTAGE -->
+<section class="ho-location connectivity-section" id="location">
+  <div class="ho-inner">
+    <header class="ho-head">
+      <h2>Location Advantage</h2>
+      <p>Live central. Live connected. Everything you need, just minutes away.</p>
+    </header>
+    <div class="location-carousel-wrap" id="location-carousel"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="ho-voices">
+  <div class="ho-inner">
+    <header class="ho-head">
+      <h2>What Our Residents Say</h2>
+      <p>Hear firsthand experiences from the students and professionals living at Kaloor Garden Residency.</p>
+    </header>
+    <div class="ho-voices-grid">
+      <figure class="ho-voice">
+        <blockquote>Moving to Kochi for my first job was daunting, but Kaloor Garden Residency felt like family right away. The high-speed internet is perfect for my night shifts, and the food tastes just like home.</blockquote>
+        <figcaption><strong>Rahul R.</strong><span>Software Engineer</span></figcaption>
+      </figure>
+      <figure class="ho-voice">
+        <blockquote>The safest luxury hotel environment I've seen. The biometric entry and polite staff give me absolute peace of mind. Very highly recommended!</blockquote>
+        <figcaption><strong>Anjali Nair</strong><span>Medical Student</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ho-faq" id="faq">
+  <div class="ho-faq-inner">
+    <header class="ho-faq-head">
+      <h2>Frequently Asked Questions</h2>
+      <p>Got questions? We've got answers.</p>
+    </header>
+    <div class="ho-faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ho-cta">
+  <div class="ho-cta-inner">
+    <h2>Find Your Perfect Stay Today</h2>
+    <p>Modern rooms with comfort, safety, and affordability.</p>
+    <a href="booking.html" class="ho-cta-btn">Book Now</a>
+  </div>
+</section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="location-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

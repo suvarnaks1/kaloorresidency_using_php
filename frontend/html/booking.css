@@ -1,0 +1,908 @@
+/* ==========================================================================
+   KALOOR GARDEN RESIDENCY — BOOKING PAGE
+   Palette: Midnight Ink · Champagne Gold · Ivory Cream
+   Type: Cormorant Garamond (display) + Inter (body)
+   ========================================================================== */
+
+/* Standalone page: remove the browser's default body margin */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.bk-page {
+  --ink: #0a0e1a;
+  --ink-soft: #111827;
+  --gold: #c9a961;
+  --gold-light: #e5c88a;
+  --gold-deep: #9c7f3f;
+  --cream: #faf7f2;
+  --cream-dark: #f2ece1;
+  --text: #2a2520;
+  --text-muted: #6b6259;
+  --line: rgba(201, 169, 97, 0.25);
+  --danger: #b91c1c;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --pad-x: clamp(24px, 5vw, 72px);
+  --pad-y: clamp(64px, 9vw, 120px);
+  --gutter: max(var(--pad-x), calc((100vw - 1280px) / 2));
+
+  width: 100%;
+  /* `clip` (not `hidden`) so the sticky summary keeps working */
+  overflow-x: hidden;
+  overflow-x: clip;
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bk-page *,
+.bk-page *::before,
+.bk-page *::after {
+  box-sizing: border-box;
+}
+
+.bk-page h1,
+.bk-page h2,
+.bk-page h3,
+.bk-page p,
+.bk-page ul,
+.bk-page dl,
+.bk-page dd,
+.bk-page fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+.bk-page ul {
+  list-style: none;
+}
+
+.bk-page a:focus-visible,
+.bk-page button:focus-visible,
+.bk-page input:focus-visible,
+.bk-page select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   NAV (standalone page only)
+   ========================================================================== */
+.bk-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px var(--gutter);
+  color: var(--cream);
+}
+
+.bk-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.bk-nav nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 36px);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bk-nav nav a {
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.bk-nav nav a:hover {
+  border-bottom-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.bk-nav nav .bk-nav-book {
+  padding: 10px 20px;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.bk-nav nav .bk-nav-book:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   1. HERO — left aligned, perks as a strip along the base
+   ========================================================================== */
+.bk-hero {
+  position: relative;
+  min-height: 80vh;  /* fallback */
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+}
+
+.bk-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("../assets/services.jpg") center/cover no-repeat;
+  opacity: 0.5;
+  filter: saturate(0.8);
+  animation: bk-zoom 2s var(--ease) both;
+}
+@media (max-width: 700px) {
+  .bk-hero-bg {
+    background-image: url("../assets/services2.jpg");
+  }
+}
+
+.bk-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--ink) 0%,
+    rgba(10, 14, 26, 0.6) 50%,
+    rgba(10, 14, 26, 0.35) 100%
+  );
+}
+
+.bk-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 140px var(--gutter) clamp(40px, 6vw, 72px);
+}
+
+.bk-hero h1 {
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2.8rem, 7.5vw, 6.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+}
+
+.bk-hero-inner > * {
+  animation: bk-rise 0.9s var(--ease) both;
+}
+
+.bk-hero-inner > p { animation-delay: 0.15s; }
+.bk-hero-inner > a { animation-delay: 0.3s; }
+
+.bk-hero-inner p {
+  margin-top: 24px;
+  max-width: 440px;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(250, 247, 242, 0.82);
+  border-left: 1px solid var(--gold);
+  padding-left: 20px;
+}
+
+.bk-hero-btn {
+  display: inline-block;
+  margin-top: clamp(28px, 4vw, 44px);
+  padding: 14px 38px;
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.bk-hero-btn:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.bk-perks {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  background: rgba(10, 14, 26, 0.7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.bk-perks li {
+  display: flex;
+  flex-direction: column;
+  padding: 18px var(--pad-x);
+}
+
+.bk-perks li + li {
+  border-left: 1px solid var(--line);
+}
+
+.bk-perks strong {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  line-height: 1.2;
+}
+
+.bk-perks span {
+  font-size: 0.72rem;
+  color: rgba(250, 247, 242, 0.65);
+}
+
+/* ==========================================================================
+   2. DESK — form (left) · sticky ink summary (right)
+   ========================================================================== */
+.bk-desk {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream);
+  scroll-margin-top: 0;
+}
+
+.bk-desk-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.bk-main-head h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.bk-main-head p {
+  margin-top: 14px;
+  max-width: 44ch;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.bk-form {
+  margin-top: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.bk-group {
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 28px;
+}
+
+.bk-group legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--gold-deep);
+}
+
+.bk-group legend + * {
+  clear: both;
+}
+
+.bk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.bk-wide {
+  grid-column: 1 / -1;
+}
+
+.bk-field > span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.bk-field input,
+.bk-field select,
+.bk-field textarea {
+  width: 100%;
+  padding: 8px 0 10px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(42, 37, 32, 0.28);
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.bk-field input::placeholder {
+  color: transparent;
+}
+
+.bk-field textarea::placeholder {
+  color: #9b9184;
+  font-weight: 300;
+  font-size: 0.85rem;
+}
+
+.bk-field textarea {
+  resize: vertical;
+  min-height: 76px;
+  line-height: 1.7;
+}
+
+.bk-field select {
+  cursor: pointer;
+  padding-right: 28px;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%239c7f3f' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  background-size: 10px;
+}
+
+.bk-field input:focus,
+.bk-field select:focus,
+.bk-field textarea:focus {
+  border-bottom-color: var(--gold);
+  box-shadow: 0 1px 0 var(--gold);
+}
+
+.bk-error {
+  padding: 12px 16px;
+  background: rgba(185, 28, 28, 0.08);
+  border-left: 3px solid var(--danger);
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+/* ---- Summary ---- */
+.bk-summary {
+  position: sticky;
+  top: 32px;
+  padding: clamp(24px, 3vw, 40px);
+  background: var(--ink-soft);
+  color: var(--cream);
+  border-top: 2px solid var(--gold);
+}
+
+.bk-summary h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: var(--cream);
+}
+
+.bk-rows {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.bk-rows > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bk-rows dt {
+  font-size: 0.74rem;
+  color: rgba(250, 247, 242, 0.6);
+}
+
+.bk-rows dd {
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: right;
+  color: var(--cream);
+}
+
+.bk-total {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bk-total span {
+  font-size: 0.74rem;
+  color: rgba(250, 247, 242, 0.6);
+}
+
+.bk-total strong {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  line-height: 1;
+  color: var(--gold-light);
+  font-variant-numeric: lining-nums;
+}
+
+.bk-submit {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 18px;
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.bk-submit:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   3. CTA
+   ========================================================================== */
+.bk-cta {
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(60px, 7vw, 100px) 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bk-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.14) 0%, transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(201, 169, 97, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.bk-cta::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.bk-cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.bk-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.bk-cta p {
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  color: rgba(250, 247, 242, 0.7);
+  margin-bottom: 32px;
+}
+
+.bk-cta-btn {
+  display: inline-block;
+  padding: 14px 38px;
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.bk-cta-btn:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   4. MODALS — verify · success
+   ========================================================================== */
+.bk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 14, 26, 0.78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: bk-fade 0.25s ease-out both;
+}
+
+.bk-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 40px);   /* fallback */
+  max-height: calc(100svh - 40px);
+  overflow-y: auto;
+  padding: clamp(26px, 3.6vw, 40px);
+  background: var(--cream);
+  color: var(--text);
+  border-top: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: bk-rise 0.45s var(--ease) both;
+}
+
+.bk-modal h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.bk-modal .bk-rows {
+  margin-top: 0;
+  border-top-color: var(--line);
+}
+
+.bk-rows-light dt {
+  color: var(--text-muted);
+}
+
+.bk-rows-light dd {
+  color: var(--ink);
+}
+
+.bk-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.bk-modal-actions button,
+.bk-modal-success button {
+  padding: 12px 16px;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.bk-modal-actions button:first-child {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(10, 14, 26, 0.3);
+}
+
+.bk-modal-actions button:first-child:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.bk-modal-actions button:last-child,
+.bk-modal-success button {
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+}
+
+.bk-modal-actions button:last-child:hover,
+.bk-modal-success button:hover {
+  background: transparent;
+  color: var(--gold-deep);
+}
+
+.bk-modal-success {
+  text-align: center;
+  align-items: center;
+}
+
+.bk-modal-success p {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+}
+
+.bk-modal-success h3 {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(201, 169, 97, 0.12);
+  border: 1px dashed rgba(201, 169, 97, 0.6);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold-deep);
+  word-break: break-all;
+}
+
+/* ==========================================================================
+   5. KEYFRAMES
+   ========================================================================== */
+@keyframes bk-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bk-zoom {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1); }
+}
+
+@keyframes bk-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 960px) {
+  .bk-desk-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .bk-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .bk-nav nav a:not(.bk-nav-book) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .bk-perks {
+    grid-template-columns: 1fr;
+  }
+
+  .bk-perks li {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px var(--pad-x);
+  }
+
+  .bk-perks li + li {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .bk-group,
+  .bk-modal-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   7. REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .bk-hero-bg,
+  .bk-hero-inner > *,
+  .bk-overlay,
+  .bk-modal {
+    animation: none;
+  }
+
+  .bk-page * {
+    transition: none !important;
+  }
+}
+/* 1. Let grid columns shrink below their content width */
+.bk-desk-inner {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+@media (max-width: 960px) {
+  .bk-desk-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bk-summary {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  .bk-group,
+  .bk-modal-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* 2. Let long values wrap inside the summary and modal rows */
+.bk-rows > div {
+  flex-wrap: wrap;
+}
+.bk-rows dt {
+  flex-shrink: 0;
+}
+.bk-rows dd {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.bk-total span {
+  overflow-wrap: anywhere;
+}
+.bk-total strong {
+  overflow-wrap: anywhere;
+}
+
+/* 3. Leave room for the fixed navbar when scrolling to the summary */
+#s-title,
+.bk-summary,
+.bk-desk {
+  scroll-margin-top: 96px;
+}
+
+/* 4. Sticky summary: sit below the navbar and scroll internally if tall */
+.bk-summary {
+  top: 96px;
+  max-height: calc(100vh - 120px);   /* fallback */
+  max-height: calc(100svh - 120px);
+  overflow-y: auto;
+}
+/* ---------- Responsive form fixes ---------- */
+
+/* fieldsets default to min-width: min-content, which can force overflow */
+.bk-group,
+.bk-main {
+  min-width: 0;
+}
+
+.bk-group {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+/* long option text is truncated instead of overflowing */
+.bk-field select {
+  min-width: 0;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* consistent control height, and iOS date inputs render correctly */
+.bk-field input,
+.bk-field select {
+  min-height: 44px;
+}
+
+.bk-field input[type="date"] {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.bk-field input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+/* 16px stops iOS from zooming the page when a field is focused */
+@media (max-width: 960px) {
+  .bk-field input,
+  .bk-field select,
+  .bk-field textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bk-group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .bk-desk {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .bk-summary {
+    padding: 22px 18px;
+  }
+
+  .bk-modal-actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

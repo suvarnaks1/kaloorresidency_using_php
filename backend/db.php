@@ -1,0 +1,12 @@
+<?php
+$host = "localhost";
+$user = "root";
+$password = ""; // Default XAMPP password ശൂന്യമാണ്
+$dbname = "my_project";
+
+$conn = new mysqli($host, $user, $password, $dbname);
+
+if ($conn->connect_error) {
+    die(json_encode(["success" => false, "message" => "Database connection failed: " . $conn->connect_error]));
+}
+?>

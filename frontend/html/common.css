@@ -1,0 +1,498 @@
+/* ==========================================================================
+   KALOOR GARDEN RESIDENCY: SHARED LAYER
+   Load this LAST (after home.css / contact.css / booking.css / services.css,
+   and after LocationCarousel.css on the home page).
+   It makes the four pages share one set of tokens, type scale, hero,
+   buttons, CTA, breakpoints and motion.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS (one source of truth, applied to every page wrapper)
+   -------------------------------------------------------------------------- */
+:root,
+.ho-page,
+.ct-page,
+.bk-page,
+.sv-page {
+  --ink: #0a0e1a;
+  --ink-soft: #111827;
+  --gold: #c9a961;
+  --gold-light: #e5c88a;
+  --gold-deep: #9c7f3f;
+  --cream: #faf7f2;
+  --cream-dark: #f2ece1;
+  --text: #2a2520;
+  --text-muted: #6b6259;
+  --line: rgba(201, 169, 97, 0.25);
+  --danger: #a4372f;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --pad-x: clamp(24px, 5vw, 72px);
+  --pad-y: clamp(64px, 9vw, 120px);
+  --container: 1280px;
+
+  /* type scale */
+  --fs-hero: clamp(2.4rem, 7vw, 6.4rem);
+  --fs-h2: clamp(1.8rem, 3.6vw, 3rem);
+  --fs-h3: clamp(1.2rem, 1.8vw, 1.5rem);
+  --fs-cta: clamp(1.8rem, 3.7vw, 2.9rem);
+  --fs-body: 0.85rem;
+  --fs-btn: 0.65rem;
+}
+
+/* services.css uses --gutter / --space-section as plain padding */
+.sv-page {
+  --gutter: var(--pad-x);
+  --space-section: var(--pad-y);
+}
+
+/* --------------------------------------------------------------------------
+   2. PAGE BASE
+   -------------------------------------------------------------------------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.ho-page,
+.ct-page,
+.bk-page,
+.sv-page {
+  width: 100%;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip;   /* clip (not hidden) so sticky headings keep working */
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   3. HERO: same height rule, image treatment, overlay, alignment, type
+   Home is full screen; inner pages are 80% of the screen.
+   -------------------------------------------------------------------------- */
+.ho-hero,
+.ct-hero,
+.bk-hero,
+.sv-hero {
+  position: relative;
+  color: var(--cream);
+  background: var(--ink);
+  overflow: hidden;
+  min-height: 100vh;  /* fallback */
+  min-height: 100svh;
+}
+
+.ho-hero {
+  min-height: 100vh;  /* fallback */
+  min-height: 100svh;
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .ho-hero,
+  .ct-hero,
+  .bk-hero,
+  .sv-hero {
+    min-height: auto;
+  }
+}
+
+/* image: identical treatment everywhere (no half-opacity on some pages) */
+.ho-hero-img,
+.ct-hero-bg,
+.bk-hero-bg,
+.sv-hero-bg {
+  opacity: 1;
+  filter: saturate(0.85) contrast(1.05);
+  animation: none;
+}
+
+.ho-hero-overlay,
+.ct-hero-overlay,
+.bk-hero-overlay,
+.sv-hero-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 26, 0.95) 0%,
+    rgba(10, 14, 26, 0.6) 45%,
+    rgba(10, 14, 26, 0.4) 100%
+  );
+}
+
+/* text block: same left edge and padding on every page */
+.ho-hero-inner,
+.ct-hero-inner,
+.bk-hero-inner,
+.sv-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: 140px var(--pad-x) clamp(48px, 7vw, 96px);
+}
+
+@media (max-width: 640px) {
+  .ho-hero-inner,
+  .ct-hero-inner,
+  .bk-hero-inner,
+  .sv-hero-inner {
+    padding-top: 120px;
+  }
+}
+
+/* hero title */
+.ho-hero-title,
+.ct-hero h1,
+.bk-hero h1,
+.sv-title {
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  animation: none;
+}
+
+/* hero lede: same size, colour and gold rule on every page */
+.ho-hero-lede,
+.ct-hero-lede,
+.sv-hero-lede,
+.bk-hero-inner > p {
+  margin-top: 24px;
+  max-width: 460px;
+  padding: 0 0 0 20px;
+  border: 0;
+  border-left: 1px solid var(--gold);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0;
+  color: rgba(250, 247, 242, 0.85);
+}
+
+/* info strips under the hero (booking perks, services facts) */
+.bk-perks,
+.sv-facts {
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 14, 26, 0.7);
+  border-top: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.bk-perks strong,
+.sv-fact strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--gold-light);
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO ENTRANCE: the one page-load sequence, identical on every page
+   title lines slide up out of a mask, then lede, then buttons, then strip
+   -------------------------------------------------------------------------- */
+@keyframes site-line {
+  from { transform: translateY(110%); }
+  to   { transform: none; }
+}
+
+@keyframes site-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* masks created by common.js for the contact + booking titles */
+.site-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.site-line {
+  display: block;
+}
+
+.ho-hero-line,
+.sv-title-line,
+.site-line {
+  animation: site-line 1s var(--ease) both;
+}
+
+.ho-hero-mask:nth-child(2) .ho-hero-line,
+.sv-title-mask:nth-child(2) .sv-title-line {
+  animation-delay: 0.12s;
+}
+
+.ho-hero-lede,
+.ct-hero-lede,
+.sv-hero-lede,
+.bk-hero-inner > p {
+  animation: site-rise 0.9s var(--ease) 0.3s both;
+}
+
+.ho-hero-actions,
+.ct-hero-phone,
+.bk-hero-btn,
+.bk-hero-inner > a {
+  animation: site-rise 0.9s var(--ease) 0.45s both;
+}
+
+.bk-perks,
+.sv-facts {
+  animation: site-rise 0.9s var(--ease) 0.6s both;
+}
+
+/* --------------------------------------------------------------------------
+   5. HEADINGS: one scale for every section title
+   -------------------------------------------------------------------------- */
+.ho-head h2,
+.ho-faq-head h2,
+.bk-main-head h2,
+.ct-details h2,
+.ct-form-wrap h2,
+.ct-directory-head h2,
+.sv-services-head h2,
+.sv-rates-head h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+/* list / card titles */
+.ho-why-title,
+.sv-service h3,
+.ct-dept h3,
+.sv-rate-main h3 {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   6. BODY TEXT: one size for supporting copy
+   -------------------------------------------------------------------------- */
+.ho-head p,
+.ho-faq-a p,
+.bk-main-head p,
+.ct-details-lede,
+.ct-directory-head p,
+.ct-dept p,
+.ct-item dd,
+.ct-map-plate p,
+.sv-service p,
+.sv-rate-main p {
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+
+/* contact form fields now match the booking form (label, input, size) */
+.ct-field > span {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.ct-field input,
+.ct-field textarea {
+  font-size: 0.92rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. BUTTONS: identical gold button everywhere
+   -------------------------------------------------------------------------- */
+.ho-btn,
+.ho-cta-btn,
+.bk-hero-btn,
+.bk-cta-btn,
+.ct-cta-btn,
+.sv-cta-btn,
+.ct-submit,
+.bk-submit {
+  font-family: var(--font-body);
+  font-size: var(--fs-btn);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.ho-btn,
+.ho-cta-btn,
+.bk-hero-btn,
+.bk-cta-btn,
+.ct-cta-btn,
+.sv-cta-btn,
+.ct-submit {
+  padding: 14px 38px;
+}
+
+.ho-btn-primary,
+.ho-cta-btn,
+.bk-hero-btn,
+.bk-cta-btn,
+.ct-cta-btn,
+.sv-cta-btn,
+.ct-submit,
+.bk-submit {
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.ho-btn-primary:hover,
+.ho-cta-btn:hover,
+.bk-hero-btn:hover,
+.bk-cta-btn:hover,
+.ct-cta-btn:hover,
+.sv-cta-btn:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+/* --------------------------------------------------------------------------
+   8. CTA BAND: same ink band, heading, copy and button on all pages
+   (services was the only light one)
+   -------------------------------------------------------------------------- */
+.ho-cta,
+.bk-cta,
+.ct-cta,
+.sv-cta {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(70px, 8vw, 110px) var(--pad-x);
+  background-color: var(--ink);
+  color: var(--cream);
+  text-align: center;
+}
+
+.sv-cta {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(201, 169, 97, 0.08) 0%, transparent 60%);
+}
+
+.ho-cta::after,
+.bk-cta::after,
+.ct-cta::after {
+  top: 40px;
+}
+
+.ho-cta h2,
+.bk-cta h2,
+.ct-cta h2,
+.sv-cta h2 {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: var(--fs-cta);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+
+.ho-cta p,
+.bk-cta p,
+.ct-cta p,
+.sv-cta p {
+  max-width: 540px;
+  margin: 0 auto 40px;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: rgba(250, 247, 242, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   9. BREAKPOINTS: every page collapses at 960 / 640
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .sv-services-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sv-services-head {
+    position: static;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. REDUCED MOTION: one rule for every page
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. DATE INPUTS (booking): appearance:none makes iOS Safari collapse or blank them
+   -------------------------------------------------------------------------- */
+.bk-field input[type="date"] {
+  display: block;
+  min-height: 2.6rem;
+  text-align: left;
+}
+
+.bk-field input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   12. BOOKING: Confirm Details button + summary note
+   -------------------------------------------------------------------------- */
+.bk-confirm {
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+/* the form button sits on cream, so its hover text needs more contrast than the summary's */
+.bk-confirm:hover {
+  color: var(--gold-deep);
+}
+
+.bk-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bk-summary-note {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(250, 247, 242, 0.6);
+}

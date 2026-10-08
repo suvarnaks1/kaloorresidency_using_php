@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Kaloor Garden Residency</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h2>Kaloor Residency</h2>
+        <span>Admin Panel</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-link active">
+          <span>Bookings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <header class="top-header">
+        <button id="menu-toggle" class="menu-btn" aria-label="Toggle Navigation">☰</button>
+        <h1>Booking Management</h1>
+        <div class="user-profile">
+          <span class="user-name">Admin</span>
+        </div>
+      </header>
+
+      <!-- STATS CARDS -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-info">
+            <p>Total Bookings</p>
+            <h3 id="stat-total-bookings">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-info">
+            <p>Total Rooms Booked</p>
+            <h3 id="stat-total-rooms">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-info">
+            <p>Total Revenue</p>
+            <h3 id="stat-total-revenue">₹0</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- FILTERS & SEARCH -->
+      <section class="controls-card">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search by name, ID, phone, or email..." />
+        </div>
+        <div class="filter-box">
+          <select id="filter-room">
+            <option value="all">All Room Types</option>
+            <option value="non-ac">Non AC Room</option>
+            <option value="ac">AC Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="double-deluxe">Double Deluxe Room</option>
+            <option value="king">King Size Room</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- BOOKINGS TABLE -->
+      <section class="table-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Guest Name</th>
+                <th>Phone</th>
+                <th>Room Type</th>
+                <th>Check-In / Out</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="booking-table-body">
+              <!-- Rows will be dynamically loaded via JS -->
+            </tbody>
+          </table>
+        </div>
+        <div id="no-data-msg" class="no-data" hidden>No bookings found.</div>
+      </section>
+    </main>
+  </div>
+
+  <!-- BOOKING DETAILS MODAL -->
+  <div class="admin-modal-overlay" id="details-modal" hidden>
+    <div class="admin-modal">
+      <div class="modal-header">
+        <h2>Booking Details</h2>
+        <button class="close-btn" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <dl class="details-list">
+          <div><dt>Booking ID:</dt><dd id="m-id">—</dd></div>
+          <div><dt>Guest Name:</dt><dd id="m-name">—</dd></div>
+          <div><dt>Email:</dt><dd id="m-email">—</dd></div>
+          <div><dt>Phone:</dt><dd id="m-phone">—</dd></div>
+          <div><dt>Room Type:</dt><dd id="m-room">—</dd></div>
+          <div><dt>Number of Rooms:</dt><dd id="m-rooms">—</dd></div>
+          <div><dt>Check-in Date:</dt><dd id="m-checkin">—</dd></div>
+          <div><dt>Check-out Date:</dt><dd id="m-checkout">—</dd></div>
+          <div><dt>Total Amount:</dt><dd id="m-total" class="amount">—</dd></div>
+          <div><dt>Special Requests:</dt><dd id="m-message">—</dd></div>
+          <div><dt>Booked On:</dt><dd id="m-created">—</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

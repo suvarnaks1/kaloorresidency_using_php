@@ -1,0 +1,898 @@
+/* ==========================================================================
+   KALOOR GARDEN RESIDENCY — HOME PAGE (reduced font sizes)
+   Palette: Midnight Ink · Champagne Gold · Ivory Cream
+   Type: Cormorant Garamond (display) + Inter (body)
+   ========================================================================== */
+.ho-page {
+  --ink: #0a0e1a;
+  --ink-soft: #111827;
+  --gold: #c9a961;
+  --gold-light: #e5c88a;
+  --gold-deep: #9c7f3f;
+  --cream: #faf7f2;
+  --cream-dark: #f2ece1;
+  --text: #2a2520;
+  --text-muted: #6b6259;
+  --line: rgba(201, 169, 97, 0.25);
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --pad-x: clamp(24px, 5vw, 72px);
+  --pad-y: clamp(64px, 9vw, 120px);
+
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ho-page *,
+.ho-page *::before,
+.ho-page *::after {
+  box-sizing: border-box;
+}
+
+.ho-page h1,
+.ho-page h2,
+.ho-page h3,
+.ho-page p,
+.ho-page ul,
+.ho-page figure,
+.ho-page blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.ho-page ul {
+  list-style: none;
+}
+
+.ho-page a:focus-visible,
+.ho-page button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.ho-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* shared section heading: title left, note right */
+.ho-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px 48px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 5vw, 60px);
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ho-head h2 {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.6vw, 3rem); /* reduced */
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.ho-head p {
+  max-width: 36ch;
+  font-size: 0.82rem; /* reduced */
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   1. HERO — left aligned, lower third
+   ========================================================================== */
+.ho-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--ink);
+  color: var(--cream);
+  overflow: hidden;
+}
+
+.ho-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+}
+
+.ho-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 26, 0.95) 0%,
+    rgba(10, 14, 26, 0.6) 45%,
+    rgba(10, 14, 26, 0.35) 100%
+  );
+}
+
+.ho-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px var(--pad-x) clamp(48px, 7vw, 96px);
+}
+
+.ho-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.4rem, 7vw, 6.4rem); /* reduced */
+  color: var(--cream);
+}
+
+.ho-hero-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.ho-hero-line {
+  display: block;
+}
+
+.ho-hero-line-alt {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.55em;
+  letter-spacing: -0.01em;
+  color: var(--gold-light);
+}
+
+.ho-hero-lede {
+  margin-top: 24px;
+  max-width: 440px;
+  font-size: 0.9rem; /* reduced */
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(250, 247, 242, 0.82);
+  border-left: 1px solid var(--gold);
+  padding-left: 20px;
+}
+
+.ho-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+
+.ho-btn {
+  display: inline-block;
+  padding: 14px 34px; /* reduced */
+  font-family: var(--font-body);
+  font-size: 0.65rem; /* reduced */
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.ho-btn-primary {
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+}
+
+.ho-btn-primary:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.ho-btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(250, 247, 242, 0.5);
+}
+
+.ho-btn-secondary:hover {
+  background: var(--cream);
+  color: var(--ink);
+  border-color: var(--cream);
+}
+
+/* ==========================================================================
+   2. ABOUT — big title left, paragraph right
+   ========================================================================== */
+.ho-about {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream);
+}
+
+.ho-about-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(240px, 5fr) 7fr;
+  gap: clamp(32px, 7vw, 110px);
+  align-items: start;
+}
+
+.ho-about h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.8vw, 4.8rem); /* reduced */
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.ho-about p {
+  max-width: 52ch;
+  padding-left: 28px;
+  border-left: 1px solid var(--gold);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem); /* reduced */
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* ==========================================================================
+   3. WHY CHOOSE — distance rings + list
+   ========================================================================== */
+.ho-why {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream-dark);
+}
+
+.ho-why-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+
+.ho-radar-wrap {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.ho-radar {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.ho-rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ho-ring {
+  fill: rgba(201, 169, 97, 0.04);
+  stroke: rgba(156, 127, 63, 0.45);
+  stroke-width: 1;
+}
+
+.ho-ring-label {
+  fill: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 8.5px; /* reduced */
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+}
+
+.ho-ray {
+  stroke: var(--gold-deep);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  transition: all 0.5s var(--ease);
+}
+
+.ho-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--gold-light);
+  font-size: 0.9rem; /* reduced */
+  box-shadow: 0 0 0 6px var(--cream-dark);
+}
+
+.ho-dot {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  color: var(--gold-deep);
+  font-size: 0.85rem; /* reduced */
+  cursor: pointer;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.ho-dot.active {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.ho-dot-tag {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: 0.6rem; /* reduced */
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.ho-radar-caption {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 0.72rem; /* reduced */
+  color: var(--text-muted);
+}
+
+.ho-why-list {
+  border-top: 1px solid var(--line);
+}
+
+.ho-why-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.ho-why-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+  padding: 24px 0 24px 0;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: padding-left 0.4s var(--ease), border-color 0.4s var(--ease), background-color 0.4s var(--ease);
+}
+
+.ho-why-item.active {
+  padding-left: 18px;
+  border-left-color: var(--gold);
+  background: rgba(250, 247, 242, 0.6);
+}
+
+.ho-why-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-deep);
+}
+
+.ho-why-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ho-why-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem; /* reduced */
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.ho-why-text {
+  font-size: 0.78rem; /* reduced */
+  color: var(--text-muted);
+  max-width: 44ch;
+}
+
+.ho-why-dist {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.55rem; /* reduced */
+  line-height: 1;
+  color: var(--gold-deep);
+  text-align: right;
+}
+
+.ho-why-dist small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.6rem; /* reduced */
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   4. ROOMS — one tall feature, two stacked
+   ========================================================================== */
+.ho-rooms {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream);
+}
+
+.ho-rooms-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  grid-template-rows: repeat(2, clamp(240px, 26vw, 360px));
+  gap: clamp(16px, 2vw, 28px);
+}
+
+.ho-room {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.ho-room:first-child {
+  grid-row: 1 / span 2;
+}
+
+.ho-room img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(1.05);
+  transition: transform 1.2s var(--ease);
+}
+
+.ho-room:hover img {
+  transform: scale(1.05);
+}
+
+.ho-room figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 80px clamp(20px, 3vw, 36px) clamp(20px, 3vw, 32px);
+  background: linear-gradient(to top, rgba(10, 14, 26, 0.92), transparent);
+  color: var(--cream);
+}
+
+.ho-room h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.3vw, 2rem); /* reduced */
+  line-height: 1.1;
+  color: var(--cream);
+}
+
+.ho-room p {
+  margin-top: 6px;
+  max-width: 34ch;
+  font-size: 0.78rem; /* reduced */
+  font-weight: 300;
+  color: rgba(250, 247, 242, 0.8);
+}
+
+/* ==========================================================================
+   5. LOCATION — ink, carousel supplied by the component
+   ========================================================================== */
+.ho-location {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--ink);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.ho-location::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(201, 169, 97, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(201, 169, 97, 0.06) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.ho-location .ho-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.ho-location .ho-head h2 {
+  color: var(--cream);
+}
+
+.ho-location .ho-head p {
+  color: rgba(250, 247, 242, 0.65);
+}
+
+/* ==========================================================================
+   6. TESTIMONIALS — two open quotes, no cards
+   ========================================================================== */
+.ho-voices {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream-dark);
+}
+
+.ho-voices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ho-voice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 8px clamp(24px, 4vw, 64px);
+}
+
+.ho-voice:first-child {
+  padding-left: 0;
+  border-right: 1px solid var(--line);
+}
+
+.ho-voice:last-child {
+  padding-right: 0;
+}
+
+.ho-voice blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem); /* reduced */
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.ho-voice figcaption {
+  display: flex;
+  flex-direction: column;
+}
+
+.ho-voice strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem; /* reduced */
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ho-voice span {
+  font-size: 0.72rem; /* reduced */
+  color: var(--gold-deep);
+}
+
+/* ==========================================================================
+   7. FAQ — sticky heading left, accordion right
+   ========================================================================== */
+.ho-faq {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream);
+}
+
+.ho-faq-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(240px, 4fr) 8fr;
+  gap: clamp(40px, 7vw, 110px);
+  align-items: start;
+}
+
+.ho-faq-head {
+  position: sticky;
+  top: 48px;
+}
+
+.ho-faq-head h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.3vw, 2.8rem); /* reduced */
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.ho-faq-head p {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem; /* reduced */
+  color: var(--gold-deep);
+}
+
+.ho-faq-list {
+  border-top: 1px solid var(--line);
+}
+
+.ho-faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.ho-faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+  font: inherit;
+}
+
+.ho-faq-q h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.6vw, 1.2rem); /* reduced */
+  line-height: 1.35;
+  transition: color 0.3s var(--ease);
+}
+
+.ho-faq-q:hover h3,
+.ho-faq-item.open h3 {
+  color: var(--gold-deep);
+}
+
+/* plus that turns into a minus */
+.ho-faq-icon {
+  position: relative;
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.ho-faq-icon::before,
+.ho-faq-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--gold-deep);
+  transition: transform 0.4s var(--ease);
+}
+
+.ho-faq-icon::after {
+  transform: rotate(90deg);
+}
+
+.ho-faq-item.open .ho-faq-icon::after {
+  transform: rotate(0deg);
+}
+
+.ho-faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease);
+}
+
+.ho-faq-a > div {
+  overflow: hidden;
+}
+
+.ho-faq-item.open .ho-faq-a {
+  grid-template-rows: 1fr;
+}
+
+.ho-faq-a p {
+  padding: 0 48px 26px 0;
+  max-width: 62ch;
+  font-size: 0.82rem; /* reduced */
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. CTA — same look as before
+   ========================================================================== */
+.ho-cta {
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  padding: clamp(70px, 8vw, 110px) 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ho-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(201, 169, 97, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ho-cta::after {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.ho-cta-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.ho-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.7vw, 2.9rem); /* reduced */
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 18px;
+}
+
+.ho-cta p {
+  font-size: clamp(0.82rem, 1vw, 0.92rem); /* reduced */
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(250, 247, 242, 0.7);
+  max-width: 540px;
+  margin: 0 auto 40px;
+}
+
+.ho-cta-btn {
+  display: inline-block;
+  padding: 14px 38px; /* reduced */
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.65rem; /* reduced */
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.ho-cta-btn:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   9. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 960px) {
+  .ho-about-inner,
+  .ho-why-layout,
+  .ho-faq-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ho-faq-head {
+    position: static;
+  }
+
+  .ho-rooms-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .ho-room,
+  .ho-room:first-child {
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ho-voices-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ho-voice,
+  .ho-voice:first-child,
+  .ho-voice:last-child {
+    padding: 0;
+    border-right: 0;
+  }
+
+  .ho-voice:first-child {
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 640px) {
+  .ho-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 320px;
+  }
+
+  .ho-btn {
+    text-align: center;
+  }
+
+  .ho-about p {
+    padding-left: 18px;
+  }
+
+  .ho-why-item {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .ho-why-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ho-why-dist {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .ho-faq-a p {
+    padding-right: 0;
+  }
+}
+
+/* ==========================================================================
+   10. REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .ho-page *,
+  .ho-page *::before,
+  .ho-page *::after {
+    transition: none !important;
+  }
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: #faf7f2;
+}
