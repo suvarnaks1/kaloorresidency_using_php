@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Admin Dashboard | Kaloor Garden Residency</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,12 +20,17 @@
         <h2>Kaloor Residency</h2>
         <span>Admin Panel</span>
       </div>
-      <nav class="nav-menu">
-        <a href="#" class="nav-link active">
-          <span>Bookings</span>
-        </a>
-      </nav>
+   <nav class="nav-menu">
+  <a href="admin.html" class="nav-link active">
+    <span>Bookings</span>
+  </a>
+  <a href="admin_contact.html" class="nav-link">
+    <span>Contact Messages</span>
+  </a>
+</nav>
     </aside>
+    <!-- Tap-outside-to-close backdrop (mobile only) -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
@@ -107,7 +112,7 @@
     <div class="admin-modal">
       <div class="modal-header">
         <h2>Booking Details</h2>
-        <button class="close-btn" id="modal-close">&times;</button>
+        <button class="close-btn" id="modal-close" aria-label="Close">&times;</button>
       </div>
       <div class="modal-body">
         <dl class="details-list">
@@ -128,5 +133,17 @@
   </div>
 
   <script src="admin.js"></script>
+  <script>
+    // Close the mobile sidebar when tapping the backdrop or a nav link.
+    // (Opening is still handled by your admin.js menu-toggle logic.)
+    (function () {
+      var sidebar = document.getElementById('sidebar');
+      function close() { sidebar.classList.remove('open'); }
+      document.getElementById('sidebar-backdrop').addEventListener('click', close);
+      sidebar.addEventListener('click', function (e) {
+        if (e.target.closest('.nav-link')) close();
+      });
+    })();
+  </script>
 </body>
 </html>

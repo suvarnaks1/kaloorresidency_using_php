@@ -1,0 +1,66 @@
+/* ==========================================================
+   Contact Messages page – additions on top of admin.css
+   Load AFTER admin.css. Everything is scoped to .contact-page.
+   ========================================================== */
+
+/* ---------- PHONE: card layout for 6 columns ---------- */
+@media (max-width: 719.98px) {
+  .contact-page .admin-table tbody tr {
+    grid-template-areas:
+      "id      date"
+      "name    name"
+      "email   email"
+      "subject subject"
+      "action  action";
+  }
+
+  .contact-page .admin-table td:nth-child(3) { grid-area: email; }
+  .contact-page .admin-table td:nth-child(4) { grid-area: subject; margin-top: 6px; }
+  .contact-page .admin-table td:nth-child(5) {
+    grid-area: date; margin-top: 0; justify-self: end; align-self: center;
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+  .contact-page .admin-table td:nth-child(6) {
+    grid-area: action; justify-self: stretch; margin-top: 12px;
+    font-size: 0.9rem; font-weight: 400; color: inherit;
+  }
+
+  /* labels */
+  .contact-page .admin-table td:nth-child(3)::before { content: "Email"; }
+  .contact-page .admin-table td:nth-child(4)::before { content: "Subject"; }
+  .contact-page .admin-table td:nth-child(5)::before { content: none; }
+}
+
+/* ---------- TABLET / DESKTOP: keep long text tidy ---------- */
+@media (min-width: 720px) {
+  .contact-page .admin-table { min-width: 860px; }
+  .contact-page .admin-table td:nth-child(3),
+  .contact-page .admin-table td:nth-child(4) {
+    max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  /* admin.css makes column 6 bold blue (it was "Total"); here it holds the button */
+  .contact-page .admin-table td:nth-child(6) { font-weight: 400; }
+}
+
+/* ---------- Modal: message block + reply button ---------- */
+.details-list > .message-row { flex-direction: column; gap: 6px; }
+.details-list dd.message-text {
+  text-align: left; white-space: pre-wrap;
+  background: var(--primary-soft);
+  border: 1px solid #b6d0fb;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-weight: 400; line-height: 1.55;
+  max-height: 40vh; overflow-y: auto;
+}
+
+.btn-reply {
+  display: grid; place-items: center;
+  width: 100%; min-height: 46px; margin-top: 14px;
+  background: var(--primary); color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem; font-weight: 600; text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-reply:hover { background: var(--primary-dark); }
+.btn-reply:active { transform: scale(0.98); }
